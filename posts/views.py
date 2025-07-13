@@ -4,6 +4,10 @@ from .models import Post
 from .forms import PostForm
 
 
+def index(request):
+    return render(request, "home.html")
+
+
 def posts_list(request):
     all_posts = Post.objects.all()
     return render(request, "posts.html", {"posts": all_posts})

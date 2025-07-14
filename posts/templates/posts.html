@@ -2,7 +2,7 @@
 {% block title %}UBlog | All Posts{% endblock %}
 {% block content %}
     {% if posts %}
-        <ul>
+        <ul class="flex flex-col gap-5">
         {% for post in posts %}
             <li>
                 <a href="{% url 'posts:detail' post.id%}"><p>Title: {{post.title}}</p></a>

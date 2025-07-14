@@ -1,21 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}U Blog{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
-<body>
-    <nav>
-        <a href="{% url 'posts:all' %}">All Posts</a>
-        <a href="{% url 'posts:index' %}">Home</a>
-        <a href="{% url 'posts:create' %}">Create Post</a>
-    </nav>
-    
-    <main>{% block content %}{% endblock %}</main>
+    <link href="{% static 'src/styles.css' %}" rel="stylesheet">
 
-    <footer> &copy; 2025 Kabera Nshuti Samuel</footer>
-</body>
+    {% block extra_styles %}{% endblock %}
+  </head>
+  <body class="relative bg-black text-white min-h-full">
+    <nav class="py-3 flex justify-evenly text-lg">
+      <a href="{% url 'posts:all' %}">All Posts</a>
+      <a href="{% url 'posts:index' %}">Home</a>
+      <a href="{% url 'posts:create' %}">Create Post</a>
+    </nav>
+
+    <main class="p-5">{% block content %}{% endblock %}</main>
+
+    <footer class="py-3 w-screen absolute bottom-0 text-center">
+      &copy; 2025 Kabera Nshuti Samuel
+    </footer>
+  </body>
 </html>

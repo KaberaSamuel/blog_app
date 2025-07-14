@@ -1,12 +1,37 @@
-{% extends 'base.html' %}
-{% block title %}UBlog | Create{% endblock %}
+{% extends 'base.html' %} 
+{% block title %}UBlog | Create{% endblock %} 
+
+{% block extra_styles %}
+<style>
+  form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: black;
+  }
+
+  input[type="submit"] {
+    margin: 0 auto;
+    width: fit-content !important;
+    padding: 8px 20px;
+  }
+</style>
+{% endblock %} 
+
 {% block content %}
-    <div class="create-post">
-        <h1>Create a new post</h1>
-        <form action="{% url 'posts:create'%}" method="post">
-        {% csrf_token %}
-        {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+<div class="w-full flex flex-col gap-5 items-center">
+  <h1 class="text-lg">Create a new post</h1>
+  <form action="{% url 'posts:create'%}" method="post" class="w-[500px] flex flex-col gap-5 border-1 border-red-500">
+    {% csrf_token %} {{ form }}
+    <input type="submit" value="Submit" />
+  </form>
+</div>
 {% endblock %}
